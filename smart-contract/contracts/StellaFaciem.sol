@@ -157,6 +157,10 @@ contract StellaFaciem is ERC721A, Ownable, ReentrancyGuard {
     maxMintPerAddr = _maxMintPerAddr;
   }
 
+  function setMaxReserve(uint256 _maxReserve) public onlyOwner {
+    maxReserve = _maxReserve;
+  }
+
   function setHiddenMetadataUri(string memory _hiddenMetadataUri) public onlyOwner {
     hiddenMetadataUri = _hiddenMetadataUri;
   }

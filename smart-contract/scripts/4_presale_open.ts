@@ -35,20 +35,20 @@ async function main() {
     ).wait();
   }
 
-  // Update max amount per Address (if needed)
-  // if (
-  //   !(await (
-  //     await contract.maxMintPerAddr()
-  //   ).eq(CollectionConfig.presale.maxMintPerAddr))
-  // ) {
-  //   console.log(
-  //     `Updating the max mint amount per TX to ${CollectionConfig.presale.maxMintPerAddr}...`
-  //   );
+  Update max amount per Address (if needed)
+  if (
+    !(await (
+      await contract.maxMintPerAddr()
+    ).eq(CollectionConfig.presale.maxMintPerAddr))
+  ) {
+    console.log(
+      `Updating the max mint amount per TX to ${CollectionConfig.presale.maxMintPerAddr}...`
+    );
 
-  //   await (
-  //     await contract.setmaxMintPerAddr(CollectionConfig.presale.maxMintPerAddr)
-  //   ).wait();
-  // }
+    await (
+      await contract.setmaxMintPerAddr(CollectionConfig.presale.maxMintPerAddr)
+    ).wait();
+  }
 
   // Unpause the contract (if needed)
   if (await contract.paused()) {
