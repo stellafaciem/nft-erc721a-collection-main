@@ -141,9 +141,9 @@ export default class Dapp extends React.Component<Props, State> {
     );
   }
 
-  private isNotMainnet(): boolean {
-    return this.state.network !== null && this.state.network.chainId !== 1;
-  }
+  // private isNotMainnet(): boolean {
+  //   return this.state.network !== null && this.state.network.chainId !== 1;
+  // }
 
   // private copyMerkleProofToClipboard(): void {
   //   const merkleProof = Whitelist.getRawProofForAddress(
@@ -421,17 +421,17 @@ export default class Dapp extends React.Component<Props, State> {
     );
   }
 
-  private generateNFTUrl(): string {
-    const subdomain = this.state.network?.chainId === 1 ? "www" : "testnets";
+  // private generateNFTUrl(): string {
+  //   const subdomain = this.state.network?.chainId === 1 ? "www" : "testnets";
 
-    return (
-      `https://${subdomain}.opensea.io/` +
-      (CollectionConfig.contractAddress
-        ? "assets/" + CollectionConfig.contractAddress
-        : null) +
-      "/"
-    );
-  }
+  //   return (
+  //     `https://${subdomain}.opensea.io/` +
+  //     (CollectionConfig.contractAddress
+  //       ? "assets/" + CollectionConfig.contractAddress
+  //       : null) +
+  //     "/"
+  //   );
+  // }
 
   private async connectWallet(): Promise<void> {
     try {

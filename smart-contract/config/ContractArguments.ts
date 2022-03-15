@@ -9,6 +9,7 @@ const ContractArguments = [
   CollectionConfig.maxSupply,
   CollectionConfig.maxReserve,
   CollectionConfig.whitelistSale.maxMintAmountPerTx,
+  CollectionConfig.whitelistSale.maxMintPerAddr,
   CollectionConfig.hiddenMetadataUri,
 ] as const;
 

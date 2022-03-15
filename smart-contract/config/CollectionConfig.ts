@@ -17,16 +17,17 @@ const CollectionConfig: CollectionConfigInterface = {
     maxMintAmountPerTx: 1,
     maxMintPerAddr: 1, // whitelist open
   },
-  // preSale: {
-  //   price: 0.0,
-  //   maxMintAmountPerTx: 10, // pre sale open
-  // },
+  preSale: {
+    price: 0.0,
+    maxMintAmountPerTx: 1, // pre sale open
+    maxMintPerAddr: 1,
+  },
   publicSale: {
     price: 0.0555,
     maxMintAmountPerTx: 5,
     maxMintPerAddr: 20, // public sale open
   },
-  contractAddress: null, // Change after deploy
+  contractAddress: "0xE1eB84Fab87a8f19967a024c19b25078f4D905B9", // Change after deploy
   openSeaSlug: "stella-faciem-nft",
   whitelistAddresses: whitelistAddresses,
 };

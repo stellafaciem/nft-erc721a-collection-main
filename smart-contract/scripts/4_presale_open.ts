@@ -35,7 +35,7 @@ async function main() {
     ).wait();
   }
 
-  Update max amount per Address (if needed)
+  // Update max amount per Address (if needed)
   if (
     !(await (
       await contract.maxMintPerAddr()
@@ -46,7 +46,7 @@ async function main() {
     );
 
     await (
-      await contract.setmaxMintPerAddr(CollectionConfig.presale.maxMintPerAddr)
+      await contract.setMaxMintPerAddr(CollectionConfig.presale.maxMintPerAddr)
     ).wait();
   }
 

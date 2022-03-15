@@ -112,8 +112,11 @@ export default class MintWidget extends React.Component<Props, State> {
           <a href={this.generateNFTUrl()} target="_blank">
             https://opensea.io/assets/
             <br />
-            (our_contract_address)/(your_tokenID)
+            (our_contract_address)/(your_tokenID*)
           </a>
+          <br />
+          <br />
+          <strong>* change "your_tokenID" with your owned SF token ID.</strong>
         </>
       ),
     });
@@ -186,10 +189,10 @@ export default class MintWidget extends React.Component<Props, State> {
   }
 
   private generateOpenSeaUrl(): string {
-    const subdomain = this.state.network?.chainId === 1 ? "www" : "testnets";
+    // this.state.network?.chainId === 1 ? "" : "testnets";
 
     return (
-      `https://${subdomain}.opensea.io/` +
+      `https://opensea.io/` +
       (CollectionConfig.openSeaSlug
         ? "collection/" + CollectionConfig.openSeaSlug
         : null)
@@ -197,10 +200,9 @@ export default class MintWidget extends React.Component<Props, State> {
   }
 
   private generateNFTUrl(): string {
-    const subdomain = this.state.network?.chainId === 1 ? "www" : "testnets";
-
+    // this.state.network?.chainId === 1 ? "" : "testnets";
     return (
-      `https://${subdomain}.opensea.io/` +
+      `https://opensea.io/` +
       (CollectionConfig.contractAddress
         ? "assets/" + CollectionConfig.contractAddress
         : null) +
@@ -208,7 +210,7 @@ export default class MintWidget extends React.Component<Props, State> {
     );
   }
 
-  private refreshPage(): void {
-    return window.location.reload();
-  }
+  // private refreshPage(): void {
+  //   return window.location.reload();
+  // }
 }

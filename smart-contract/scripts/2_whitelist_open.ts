@@ -52,6 +52,23 @@ async function main() {
     ).wait();
   }
 
+  // Update max amount per Address (if needed)
+  if (
+    !(await (
+      await contract.maxMintPerAddr()
+    ).eq(CollectionConfig.whitelistSale.maxMintPerAddr))
+  ) {
+    console.log(
+      `Updating the max mint amount per TX to ${CollectionConfig.whitelistSale.maxMintPerAddr}...`
+    );
+
+    await (
+      await contract.setMaxMintPerAddr(
+        CollectionConfig.whitelistSale.maxMintPerAddr
+      )
+    ).wait();
+  }
+
   // Update root hash (if changed)
   if ((await contract.merkleRoot()) !== rootHash) {
     console.log(`Updating the root hash to: ${rootHash}`);
