@@ -6,7 +6,7 @@ const CollectionConfig: CollectionConfigInterface = {
   // yarn rename-contract NEW_CONTRACT_NAME
   // Please DO NOT change it manually!
   contractName: "StellaFaciem",
-  tokenName: "Stella Faciem NFT",
+  tokenName: "StellaFaciem Faciem NFT",
   tokenSymbol: "SF",
   hiddenMetadataUri:
     "https://stellafaciem.mypinata.cloud/ipfs/QmdqefdwFy35x1UNnC6Md5nW2AqfvKKbrrZUQuyr6wMJT8/",
