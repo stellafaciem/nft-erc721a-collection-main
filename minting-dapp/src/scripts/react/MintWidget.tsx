@@ -16,16 +16,12 @@ interface Props {
 
 interface State {
   mintAmount: number;
-  network: ethers.providers.Network | null;
   reload: boolean;
-  mintFeedback: string | JSX.Element | null;
 }
 
 const defaultState: State = {
   mintAmount: 1,
-  network: null,
   reload: false,
-  mintFeedback: null,
 };
 
 export default class MintWidget extends React.Component<Props, State> {
@@ -62,75 +58,15 @@ export default class MintWidget extends React.Component<Props, State> {
     if (!this.props.isPaused) {
       await this.props.mintTokens(this.state.mintAmount);
 
-      return this.setState({
-        mintFeedback: (
-          <>
-            <br />
-            You are now the proud owner of a <strong>Stella Faciem NFT</strong>!
-            <br />
-            You will be able to see the NFT in your profile on{" "}
-            <a href={this.generateOpenSeaUrl()} target="_blank">
-              OpenSea
-            </a>{" "}
-            & Metamask.
-            <br />
-            <br />
-            Or you can check it via this link:
-            <br />
-            <a href={this.generateNFTUrl()} target="_blank">
-              https://opensea.io/assets/
-              <br />
-              (our_contract_address)/(your_tokenID*)
-            </a>
-            <br />
-            <br />
-            <strong>
-              * change "your_tokenID" with your owned SF token ID.
-            </strong>
-          </>
-        ),
-      });
+      return;
     }
 
     await this.props.whitelistMintTokens(this.state.mintAmount);
-
-    return this.setState({
-      mintFeedback: (
-        <>
-          <br />
-          You are now the proud owner of a <strong>Stella Faciem NFT</strong>!
-          <br />
-          You will be able to see the NFT in your profile on{" "}
-          <a href={this.generateOpenSeaUrl()} target="_blank">
-            OpenSea
-          </a>{" "}
-          & Metamask.
-          <br />
-          <br />
-          Or you can check it via this link:
-          <br />
-          <a href={this.generateNFTUrl()} target="_blank">
-            https://opensea.io/assets/
-            <br />
-            (our_contract_address)/(your_tokenID*)
-          </a>
-          <br />
-          <br />
-          <strong>* change "your_tokenID" with your owned SF token ID.</strong>
-        </>
-      ),
-    });
   }
 
   render() {
     return (
       <>
-        {this.state.mintFeedback ? (
-          <div className="mintFeedback">
-            <p>{this.state.mintFeedback}</p>
-            <button onClick={() => this.closeMintFeedback()}>Close</button>
-          </div>
-        ) : null}
         {this.canMint() ? (
           <div className="mint-widget">
             <div className="price">
@@ -181,35 +117,6 @@ export default class MintWidget extends React.Component<Props, State> {
       </>
     );
   }
-
-  private closeMintFeedback(): void {
-    this.setState({
-      mintFeedback: null,
-    });
-  }
-
-  private generateOpenSeaUrl(): string {
-    // this.state.network?.chainId === 1 ? "" : "testnets";
-
-    return (
-      `https://opensea.io/` +
-      (CollectionConfig.openSeaSlug
-        ? "collection/" + CollectionConfig.openSeaSlug
-        : null)
-    );
-  }
-
-  private generateNFTUrl(): string {
-    // this.state.network?.chainId === 1 ? "" : "testnets";
-    return (
-      `https://opensea.io/` +
-      (CollectionConfig.contractAddress
-        ? "assets/" + CollectionConfig.contractAddress
-        : null) +
-      "/"
-    );
-  }
-
   // private refreshPage(): void {
   //   return window.location.reload();
   // }

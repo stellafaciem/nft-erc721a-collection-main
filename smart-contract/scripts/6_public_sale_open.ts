@@ -46,7 +46,7 @@ async function main() {
     );
 
     await (
-      await contract.setmaxMintPerAddr(
+      await contract.setMaxMintPerAddr(
         CollectionConfig.publicSale.maxMintPerAddr
       )
     ).wait();

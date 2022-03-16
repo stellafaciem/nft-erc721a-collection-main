@@ -30,6 +30,7 @@ interface State {
   merkleProofManualAddressFeedbackMessage: string | JSX.Element | null;
   etherscanUrl: string;
   errorMessage: string | JSX.Element | null;
+  mintFeedback: string | JSX.Element | null;
 }
 
 const defaultState: State = {
@@ -46,6 +47,7 @@ const defaultState: State = {
   merkleProofManualAddressFeedbackMessage: null,
   etherscanUrl: "",
   errorMessage: null,
+  mintFeedback: null,
 };
 
 export default class Dapp extends React.Component<Props, State> {
@@ -109,6 +111,35 @@ export default class Dapp extends React.Component<Props, State> {
       await this.contract.mint(amount, {
         value: this.state.tokenPrice.mul(amount),
       });
+
+      return this.setState({
+        mintFeedback: (
+          <>
+            <br />
+            You are now the proud owner of a <strong>Stella Faciem NFT</strong>!
+            <br />
+            You will be able to see the NFT in your profile on{" "}
+            <a href={this.generateOpenSeaUrl()} target="_blank">
+              OpenSea
+            </a>{" "}
+            & Metamask.
+            <br />
+            <br />
+            Or you can check it via this link:
+            <br />
+            <a href={this.generateNFTUrl()} target="_blank">
+              https://opensea.io/assets/
+              <br />
+              (our_contract_address)/(your_tokenID*)
+            </a>
+            <br />
+            <br />
+            <strong>
+              * change "your_tokenID" with your owned SF token ID.
+            </strong>
+          </>
+        ),
+      });
     } catch (e) {
       this.setError(e);
     }
@@ -121,6 +152,34 @@ export default class Dapp extends React.Component<Props, State> {
         Whitelist.getProofForAddress(this.state.userAddress!),
         { value: this.state.tokenPrice.mul(amount) }
       );
+      return this.setState({
+        mintFeedback: (
+          <>
+            <br />
+            You are now the proud owner of a <strong>Stella Faciem NFT</strong>!
+            <br />
+            You will be able to see the NFT in your profile on{" "}
+            <a href={this.generateOpenSeaUrl()} target="_blank">
+              OpenSea
+            </a>{" "}
+            & Metamask.
+            <br />
+            <br />
+            Or you can check it via this link:
+            <br />
+            <a href={this.generateNFTUrl()} target="_blank">
+              https://opensea.io/assets/
+              <br />
+              (our_contract_address)/(your_tokenID*)
+            </a>
+            <br />
+            <br />
+            <strong>
+              * change "your_tokenID" with your owned SF token ID.
+            </strong>
+          </>
+        ),
+      });
     } catch (e) {
       this.setError(e);
     }
@@ -211,6 +270,14 @@ export default class Dapp extends React.Component<Props, State> {
               {this.isContractReady() ? (
                 <>
                   <div className="container-above">
+                    {this.state.mintFeedback ? (
+                      <div className="mintFeedback">
+                        <p>{this.state.mintFeedback}</p>
+                        <button onClick={() => this.closeMintFeedback()}>
+                          Close
+                        </button>
+                      </div>
+                    ) : null}
                     {this.state.totalSupply < this.state.maxSupply ? (
                       <MintWidget
                         maxSupply={this.state.maxSupply}
@@ -226,7 +293,6 @@ export default class Dapp extends React.Component<Props, State> {
                         whitelistMintTokens={(mintAmount) =>
                           this.whitelistMintTokens(mintAmount)
                         }
-                        // mintFeedback={this.mintFeedback()}
                       />
                     ) : null}
                     {this.state.totalSupply == this.state.maxSupply ? (
@@ -402,6 +468,12 @@ export default class Dapp extends React.Component<Props, State> {
     });
   }
 
+  private closeMintFeedback(): void {
+    this.setState({
+      mintFeedback: null,
+    });
+  }
+
   private generateEtherscanUrl(): string {
     return `https://${
       this.state.network?.chainId === 1 || !this.state.network?.name
@@ -411,13 +483,24 @@ export default class Dapp extends React.Component<Props, State> {
   }
 
   private generateOpenSeaUrl(): string {
-    const subdomain = this.state.network?.chainId === 1 ? "www" : "testnets";
+    const subdomain = this.state.network?.chainId === 1 ? "" : "testnets";
 
     return (
       `https://${subdomain}.opensea.io/` +
       (CollectionConfig.openSeaSlug
         ? "collection/" + CollectionConfig.openSeaSlug
         : null)
+    );
+  }
+
+  private generateNFTUrl(): string {
+    this.state.network?.chainId === 1 ? "" : "testnets";
+    return (
+      `https://opensea.io/` +
+      (CollectionConfig.contractAddress
+        ? "assets/" + CollectionConfig.contractAddress
+        : null) +
+      "/"
     );
   }
 
