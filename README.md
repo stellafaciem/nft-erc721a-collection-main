@@ -1,6 +1,6 @@
-# NFT ERC721 Collection
+# Stella Faciem NFT ERC721A Collection
 
-An all-in-one solution for `ERC721` collections. Build, test and deploy your smart contract, together with a totally
+An all-in-one solution for `ERC721A` collections. Build, test and deploy your smart contract, together with a totally
 integrated DAPP within a simple yet powerful workspace.
 
 ## Disclaimer
