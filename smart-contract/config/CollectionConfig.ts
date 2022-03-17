@@ -28,7 +28,7 @@ const CollectionConfig: CollectionConfigInterface = {
     maxMintPerAddr: 20, // public sale open
   },
   contractAddress: "0xE1eB84Fab87a8f19967a024c19b25078f4D905B9", // Change after deploy
-  openSeaSlug: "stella-faciem-nft",
+  openSeaSlug: "sf-faciem-nft",
   whitelistAddresses: whitelistAddresses,
 };
 

@@ -1,6 +1,5 @@
-import { ethers, utils, BigNumber } from "ethers";
+import { utils, BigNumber } from "ethers";
 import React from "react";
-import CollectionConfig from "../../../../smart-contract/config/CollectionConfig";
 
 interface Props {
   maxSupply: number;
