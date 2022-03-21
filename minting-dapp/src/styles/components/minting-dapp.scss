@@ -120,20 +120,19 @@
 
           @apply text-4xl;
         }
+      }
+      .collection-sold-out {
+        @apply rounded-lg;
+        @apply px-6 py-4;
 
-        .collection-sold-out {
-          @apply rounded-lg;
-          @apply px-6 py-4;
+        @apply text-center;
+        @apply bg-popupsbg;
+        @apply border border-neutral-50;
+        @apply shadow;
 
-          @apply text-center;
-          @apply bg-popupsbg;
-          @apply border border-neutral-50;
-          @apply shadow;
-
-          &.collection-sold-out {
-            h2 {
-              @apply text-xl;
-            }
+        &.collection-sold-out {
+          h2 {
+            @apply text-xl;
           }
         }
       }
