@@ -39,14 +39,14 @@ async function main() {
   if (
     !(await (
       await contract.maxMintPerAddr()
-    ).eq(CollectionConfig.presale.maxMintPerAddr))
+    ).eq(CollectionConfig.preSale.maxMintPerAddr))
   ) {
     console.log(
-      `Updating the max mint amount per TX to ${CollectionConfig.presale.maxMintPerAddr}...`
+      `Updating the max mint amount per TX to ${CollectionConfig.preSale.maxMintPerAddr}...`
     );
 
     await (
-      await contract.setMaxMintPerAddr(CollectionConfig.presale.maxMintPerAddr)
+      await contract.setMaxMintPerAddr(CollectionConfig.preSale.maxMintPerAddr)
     ).wait();
   }
 

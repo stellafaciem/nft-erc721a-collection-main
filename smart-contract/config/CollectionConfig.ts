@@ -18,12 +18,12 @@ const CollectionConfig: CollectionConfigInterface = {
     maxMintPerAddr: 1, // whitelist open
   },
   preSale: {
-    price: 0.0,
-    maxMintAmountPerTx: 1, // pre sale open
-    maxMintPerAddr: 1,
+    price: 0.025,
+    maxMintAmountPerTx: 5, // pre sale open
+    maxMintPerAddr: 10,
   },
   publicSale: {
-    price: 0.0555,
+    price: 0.05,
     maxMintAmountPerTx: 5,
     maxMintPerAddr: 20, // public sale open
   },

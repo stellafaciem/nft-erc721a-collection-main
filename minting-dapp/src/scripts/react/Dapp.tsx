@@ -200,9 +200,9 @@ export default class Dapp extends React.Component<Props, State> {
     );
   }
 
-  // private isNotMainnet(): boolean {
-  //   return this.state.network !== null && this.state.network.chainId !== 1;
-  // }
+  private isNotMainnet(): boolean {
+    return this.state.network !== null && this.state.network.chainId !== 1;
+  }
 
   // private copyMerkleProofToClipboard(): void {
   //   const merkleProof = Whitelist.getRawProofForAddress(
@@ -249,14 +249,14 @@ export default class Dapp extends React.Component<Props, State> {
             <img src="/build/images/preview.gif" alt="Collection preview" />
           </div>
 
-          {/* {this.isNotMainnet() ? (
-          <div className="not-mainnet">
-            You are not connected to the main network.
-            <span className="small">
-              Current network: <strong>{this.state.network?.name}</strong>
-            </span>
-          </div>
-        ) : null} */}
+          {this.isNotMainnet() ? (
+            <div className="not-mainnet">
+              You are not connected to the main network.
+              <span className="small">
+                Current network: <strong>{this.state.network?.name}</strong>
+              </span>
+            </div>
+          ) : null}
 
           {this.state.errorMessage ? (
             <div className="error">

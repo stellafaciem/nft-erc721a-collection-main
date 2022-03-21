@@ -5,11 +5,35 @@
 
   .container {
     @apply flex flex-col gap-6;
+
     .logo {
       @apply flex flex-col;
       @apply w-2/6;
       // @apply p-10;
       @apply mx-auto;
+    }
+
+    .not-mainnet {
+      @apply rounded-lg;
+      @apply px-6 py-4;
+
+      @apply text-center;
+      @apply bg-popupsbg;
+      @apply border border-neutral-50;
+      @apply shadow;
+
+      &.not-mainnet {
+        @apply bg-secondary-600;
+        @apply border-secondary-600;
+
+        @apply text-secondarytxt;
+
+        .small {
+          @apply block;
+
+          @apply text-sm;
+        }
+      }
     }
 
     .preview {
@@ -290,25 +314,3 @@
     }
   }
 }
-// .not-mainnet {
-//   @apply rounded-lg;
-//   @apply px-6 py-4;
-
-//   @apply text-center;
-//   @apply bg-popupsbg;
-//   @apply border border-neutral-50;
-//   @apply shadow;
-
-//   &.not-mainnet {
-//     @apply bg-secondary-600;
-//     @apply border-secondary-600;
-
-//     @apply text-secondarytxt;
-
-//     .small {
-//       @apply block;
-
-//       @apply text-sm;
-//     }
-//   }
-// }
